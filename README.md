@@ -1,64 +1,80 @@
-# Major Leagues - Football (Soccer)
+# Product Demand Forecast
 
-It is a Data Regression Project
+It is Timeseries Forecasting project.
 
 # What it Does?
-  - It predicts the score of a team based on the other metrics.
+  - It forecasts the demand for a particular product
   
 # Datset Used
-- Soccer SPI : https://github.com/fivethirtyeight/data/tree/master/soccer-spi
-- ###### It contains 3 Data Files.
+- Product Demand : https://www.kaggle.com/felixzhao/productdemandforecasting
+- ###### It contains a Data File.
 
 
-        SPI Global Rankings - Ranking of all soccer teams (club)
-        SPI Global Rankings - Ranking of all International soccer teams.
-        SPI all Matches - Metrics of all the matches
-- We will be using **SPI all matches** dataset to predict the goals for each team
+        Historical Product Demand - Demand for all products 
 
-# Regression
-- We will be applying two types of regression on data
--- **Linear Regression**
--- **Random Forest Regression**
 
+# Time Series Forecasting
+- We will be applying two types of forecasting on the data
+-- **Simple Smoothing**
+-- **Exponential Smoothing**
+-- **Decomposition**
 # Data Preparation
-- **NaN Values**
-  - Some of the mathces didn't have **Scores**. Those records were removed (No way to compare the prediction)
-  - Some of the other fields had NaN. Mean values of the respective column is used.
+- **Select Product**
+  - Dataset contains around ~2000 products. I have chose product **1359**, which had maximum number of records.
+- **Aggregate Data**
+  - Dataset contains demand for a particular day. Data has been aggregated such that the demand is grouped for a single **month**
+- **Remove Outliers**
+  - For a particular month(last month), data is is incomplete. So, it has been removed.
+- **Train and Test Data**
+  - Data has been seperated into test and train. Test data contains demand for last **9 months**.
 
 
 # Analysis
-#### Linear Regression:
-- Data has been split into Train and Test.
-- Linear Regression has been applied for both the teams to predict the score.
-- Below graphs shows the Residual plot for both the teams.
 
-![Residual Plot 1](https://raw.githubusercontent.com/nareshkumar66675/SoccerSPI/master/reports/ResidualTeam1.png "Residual Plot 1")  |  ![Residual Plot 2](https://raw.githubusercontent.com/nareshkumar66675/SoccerSPI/master/reports/ResidualTeam2.png " Residual Plot 2")
+-- Below Graph shows the demand for the product 1359 for all the years.
 
-#### Random Forest Regression:
-- 100 Decision trees has been used for the prediction.
-- Computed Decision Tree
-  - [Team 1](https://raw.githubusercontent.com/nareshkumar66675/SoccerSPI/master/reports/RFTree1.png)
-  - [Team 2](https://raw.githubusercontent.com/nareshkumar66675/SoccerSPI/master/reports/RFTree2.png)
+![Product Demand](https://raw.githubusercontent.com/nareshkumar66675/ProductDemand/master/reports/Product1359Demand.png "Product Demand")
+
+#### Simple Smoothing:
+- Simple Smoothing has been applied to forecast the demand for the product 1359.
+- Below graphs shows the Forecast for the product.
+
+![Simple Smoothing](https://raw.githubusercontent.com/nareshkumar66675/ProductDemand/master/reports/SimpleSmooth.png "Simple Smoothing")  
+
+#### Exponential Smoothing:
+- Below graphs shows the Forecast for the product.
+
+![Exponential Smoothing](https://raw.githubusercontent.com/nareshkumar66675/ProductDemand/master/reports/ExpSmooth.png "Exponential Smoothing") 
+
+#### Exponential Smoothing:
+- Below graphs shows the Forecast for the product using Exponential Smoothing.
+
+![Exponential Smoothing](https://raw.githubusercontent.com/nareshkumar66675/ProductDemand/master/reports/ExpSmooth.png "Exponential Smoothing") 
+
+#### Decomposition:
+- Below graph shows the decomposition trend
+![Trend](https://raw.githubusercontent.com/nareshkumar66675/ProductDemand/master/reports/DecomTrend.png "Trend") 
+
+- Below graph shows the Forecast for the product using decomposition.
+
+![Exponential Smoothing](https://raw.githubusercontent.com/nareshkumar66675/ProductDemand/master/reports/Decomposition.png "Exponential Smoothing") 
 
 #### Results:
-- Random forest performed well in training data set. 
-- Linear regression model gave almost same result in both Traning and Testing.
-- Below graph shows the comparison of each model.
+- Below graph shows the **RMSE** for each method.
 
-![Mean Square Error](https://raw.githubusercontent.com/nareshkumar66675/SoccerSPI/master/reports/MSE.png "MEan Square Error")
+![Mean Square Error](https://raw.githubusercontent.com/nareshkumar66675/ProductDemand/master/reports/RMSE.png "MEan Square Error")
 
 
 # Project Struture
 
 ##### Src
-- SoccerSPI.py - python file exported from Jupyter
+- ProductDemand.py - python file exported from Jupyter
 ##### Notebooks
-- SoccerSPI.ipynb - Jupyter notebook
+- ProductDemand.ipynb - Jupyter notebook
 ##### Data
-- External - SoccerSPI Data
+- External - ProductDemand Data
 ##### Reports
-- Trees - Decision Trees
-- Graphs - Residual & Mean Square Error
+- Graphs - Forecast & Mean Square Error
 
 ***
 
