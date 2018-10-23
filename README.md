@@ -53,6 +53,7 @@ It is Timeseries Forecasting project.
 
 #### Decomposition:
 - Below graph shows the decomposition trend
+
 ![Trend](https://raw.githubusercontent.com/nareshkumar66675/ProductDemand/master/reports/DecomTrend.png "Trend") 
 
 - Below graph shows the Forecast for the product using decomposition.
